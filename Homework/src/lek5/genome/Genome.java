@@ -5,8 +5,6 @@ import java.util.Arrays;
 public class Genome {
 	
 
-	private static final int GENOME_SIZE = 10;
-	private static final int WORD_SIZE = 2;
 	
 	/*
 	 * A C G T
@@ -31,15 +29,15 @@ public class Genome {
 	 *  123456
 	 */
 	
-	public static void main(String[] args) {
-		
-		byte[] data = DataGenerator.generate(GENOME_SIZE);
-		
-		
-		
-		System.out.println(findDuplicates(data, WORD_SIZE));
-		
-	}
+//	public static void main(String[] args) {
+//		
+//		byte[] data = DataGenerator.generate(GENOME_SIZE);
+//		
+//		
+//		
+//		System.out.println(findDuplicates(data, WORD_SIZE));
+//		
+//	}
 	
 	
 
@@ -55,11 +53,6 @@ public class Genome {
 					}
 				}
 				if (found) {
-					byte[] wordBytes1 = Arrays.copyOfRange(data, i, i + w);
-					byte[] wordBytes2 = Arrays.copyOfRange(data, j, j + w);
-									
-//					System.out.println(i + " : " + new String(wordBytes2) + " == " + j + " : " + new String(wordBytes1) );
-//					System.out.println(count);
 					counter++;
 					break;
 				}
