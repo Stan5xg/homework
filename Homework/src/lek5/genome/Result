@@ -1,0 +1,133 @@
+++++ Testing with: wordSize = 2 stringSize == 100 +++
+Genome         result :83 in:25944948
+GenomeWithSort result :83 in:39597561
+GenomeWithHash result :83 in:4020011
+++++ Testing with: wordSize = 2 stringSize == 1000 +++
+Genome         result :983 in:12282879
+GenomeWithSort result :983 in:6873926
+GenomeWithHash result :983 in:1972567
+++++ Testing with: wordSize = 2 stringSize == 20000 +++
+Genome         result :19983 in:12618125
+GenomeWithSort result :19983 in:19588073
+GenomeWithHash result :19983 in:2931136
+++++ Testing with: wordSize = 2 stringSize == 500000 +++
+Genome         result :499983 in:97463084
+GenomeWithSort result :499983 in:269449555
+GenomeWithHash result :499983 in:26685382
+++++ Testing with: wordSize = 2 stringSize == 1000000 +++
+Genome         result :999983 in:175350292
+GenomeWithSort result :999983 in:629071342
+GenomeWithHash result :999983 in:63515437
+++++ Testing with: wordSize = 4 stringSize == 100 +++
+Genome         result :19 in:63956141
+GenomeWithSort result :19 in:175478
+GenomeWithHash result :19 in:716929
+++++ Testing with: wordSize = 4 stringSize == 1000 +++
+Genome         result :742 in:3320166
+GenomeWithSort result :742 in:917582
+GenomeWithHash result :742 in:638352
+++++ Testing with: wordSize = 4 stringSize == 20000 +++
+Genome         result :19741 in:43233387
+GenomeWithSort result :19741 in:10509615
+GenomeWithHash result :19741 in:2034237
+++++ Testing with: wordSize = 4 stringSize == 500000 +++
+Genome         result :499741 in:1123813856
+GenomeWithSort result :499741 in:312694288
+GenomeWithHash result :499741 in:33957536
+++++ Testing with: wordSize = 4 stringSize == 1000000 +++
+Genome         result :999741 in:2132004665
+GenomeWithSort result :999741 in:474571269
+GenomeWithHash result :999741 in:60791562
+++++ Testing with: wordSize = 6 stringSize == 100 +++
+Genome         result :0 in:60973672
+GenomeWithSort result :0 in:52309
+GenomeWithHash result :0 in:36360
+++++ Testing with: wordSize = 6 stringSize == 1000 +++
+Genome         result :94 in:3786958
+GenomeWithSort result :94 in:438088
+GenomeWithHash result :94 in:354756
+++++ Testing with: wordSize = 6 stringSize == 20000 +++
+Genome         result :15926 in:550177477
+GenomeWithSort result :15926 in:11067464
+GenomeWithHash result :15926 in:2627723
+++++ Testing with: wordSize = 6 stringSize == 500000 +++
+Genome         result :495899 in:21374123022
+GenomeWithSort result :495899 in:423672838
+GenomeWithHash result :495899 in:32669469
+++++ Testing with: wordSize = 6 stringSize == 1000000 +++
+Genome         result :995899 in:34798093252
+GenomeWithSort result :995899 in:682696120
+GenomeWithHash result :995899 in:61952671
+++++ Testing with: wordSize = 8 stringSize == 100 +++
+Genome         result :0 in:62092389
+GenomeWithSort result :0 in:42628
+GenomeWithHash result :0 in:28892
+++++ Testing with: wordSize = 8 stringSize == 1000 +++
+Genome         result :4 in:4112181
+GenomeWithSort result :4 in:391627
+GenomeWithHash result :4 in:266785
+++++ Testing with: wordSize = 8 stringSize == 20000 +++
+Genome         result :2802 in:1502372301
+GenomeWithSort result :2802 in:10136325
+GenomeWithHash result :2802 in:2662831
+++++ Testing with: wordSize = 8 stringSize == 500000 +++
+Genome         result :434489 in:242236432080
+GenomeWithSort result :434489 in:478418684
+GenomeWithHash result :434489 in:109428788
+++++ Testing with: wordSize = 8 stringSize == 1000000 +++
+Genome         result :934457 in:524211618843
+GenomeWithSort result :934457 in:946427602
+GenomeWithHash result :934457 in:158654909
+++++ Testing with: wordSize = 9 stringSize == 100 +++
+Genome         result :0 in:158787343
+GenomeWithSort result :0 in:37577
+GenomeWithHash result :0 in:35785
+++++ Testing with: wordSize = 9 stringSize == 1000 +++
+Genome         result :2 in:3898992
+GenomeWithSort result :2 in:355154
+GenomeWithHash result :2 in:113312
+++++ Testing with: wordSize = 9 stringSize == 20000 +++
+Genome         result :724 in:1769655683
+GenomeWithSort result :724 in:10050741
+GenomeWithHash result :724 in:2037740
+++++ Testing with: wordSize = 9 stringSize == 500000 +++
+Genome         result :276445 in:615480523224
+GenomeWithSort result :276445 in:577541796
+GenomeWithHash result :276445 in:164752620
+++++ Testing with: wordSize = 9 stringSize == 1000000 +++
+Genome         result :743659 in:1626484790103
+GenomeWithSort result :743659 in:1234570247
+GenomeWithHash result :743659 in:270085690
+++++ Testing with: wordSize = 10 stringSize == 100 +++
+Genome         result :0 in:270257441
+GenomeWithSort result :0 in:42914
+GenomeWithHash result :0 in:37815
+++++ Testing with: wordSize = 10 stringSize == 1000 +++
+Genome         result :2 in:4333857
+GenomeWithSort result :2 in:358044
+GenomeWithHash result :2 in:109459
+++++ Testing with: wordSize = 10 stringSize == 20000 +++
+Genome         result :209 in:1639901844
+GenomeWithSort result :209 in:10375181
+GenomeWithHash result :209 in:2148727
+++++ Testing with: wordSize = 10 stringSize == 500000 +++
+Genome         result :102268 in:904414164969
+GenomeWithSort result :102268 in:475026033
+GenomeWithHash result :102268 in:165751163
+++++ Testing with: wordSize = 10 stringSize == 1000000 +++
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  Internal Error (safepoint.cpp:310), pid=30879, tid=0x00007fbbacafa700
+#  guarantee(PageArmed == 0) failed: invariant
+#
+# JRE version: OpenJDK Runtime Environment (8.0_131-b11) (build 1.8.0_131-8u131-b11-0ubuntu1.16.04.2-b11)
+# Java VM: OpenJDK 64-Bit Server VM (25.131-b11 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# An error report file with more information is saved as:
+# /home/stan/git/homework/Homework/hs_err_pid30879.log
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+#
