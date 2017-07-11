@@ -12,21 +12,32 @@ public class StringMethodsPractice {
 		String s4 = "Hello  ";
 		String s5 = "  He l l o  ";  
 		String s6 = "";
+		String s7 = "   ";
+		String s8 = null;
 		
 		System.out.println(Asserts.assertEquals(trim(s1), s2));		
-		System.out.println(Asserts.assertEquals(trim(s2), s2));		
+		System.out.println(Asserts.assertEquals(trim(s2), s2));
+		System.out.println(Asserts.assertEquals(trim(s3), s2));
+		System.out.println(Asserts.assertEquals(trim(s4), s2));
+		System.out.println(Asserts.assertEquals(trim(s5), s5.trim()));
+		
 
 	}
 
 	public static String trim(String str) {
-		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < str.length(); i++) {
-			if (str.charAt(i) > ' ') {
-				sb.append(str.charAt(i));
-			}
+		int start = 0;
+		int finish = str.length() - 1;
+		
+		while(str.charAt(start) == ' ' && start < finish) {
+			start++;
 		}
 		
-		return sb.toString();
+		while(str.charAt(finish) == ' ' &&  finish > start) {
+			finish--;
+		}
+		
+		
+		return str.substring(start, finish+1);
 	}
 
 
