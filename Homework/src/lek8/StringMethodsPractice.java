@@ -47,7 +47,7 @@ public class StringMethodsPractice {
 			} else {
 				chars[i] = curr;
 			}
-			
+			 
 		}
 		return new String(chars);
 	}
