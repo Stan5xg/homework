@@ -53,6 +53,9 @@ public class StringArrayList {
 	}
 
 	public String get(int i) {
+		if (i < 0 || i >= size) {
+			return null;
+		}
 		return elements[i];
 	}
 	

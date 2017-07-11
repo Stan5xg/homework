@@ -35,6 +35,7 @@ public class UseStringArrayList {
 		System.out.println(list);
 		
 		System.out.println(Asserts.assertEquals(list.get(0), "three"));
+		System.out.println(Asserts.assertEquals(list.get(20), "null"));
 	}
 	
 }
