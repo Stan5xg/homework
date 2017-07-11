@@ -27,11 +27,18 @@ public class StringMethodsPractice {
 		System.out.println(Asserts.assertEquals(replace("a", 'a', 'b'), "b"));
 		System.out.println(Asserts.assertEquals(replace("aaaa", 'a', 'b'), "bbbb"));
 		System.out.println(Asserts.assertEquals(replace("a dsfasdfa a a", 'a', 'b'), "b dsfbsdfb b b"));
+		System.out.println(Asserts.assertEquals(replace("", 'a', 'b'), ""));
+		System.out.println(Asserts.assertEquals(replace("ddd", 'a', 'b'), "ddd"));
+		System.out.println(Asserts.assertEquals(replace(null, 'a', 'b'), "null"));
 		
 
 	}
 
 	public static String replace(String str, char oldChar, char newChar) {
+		if (str == null || str.length() == 0) {
+			return str;
+		}
+		
 		char[] chars = new char[str.length()];
 		for (int i = 0; i < str.length(); i++) {
 			char curr = str.charAt(i);
