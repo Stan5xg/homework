@@ -72,8 +72,7 @@ public class StringArrayList {
 	}
 
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return size == 0;
 	}
 
 	

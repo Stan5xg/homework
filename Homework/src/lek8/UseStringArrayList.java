@@ -48,6 +48,9 @@ public class UseStringArrayList {
 		System.out.println(Asserts.assertEquals(list.size(), 2));
 		
 		System.out.println(Asserts.assertEquals(list.isEmpty(), false));
+		list.remove(0);
+		list.remove(0);
+		System.out.println(Asserts.assertEquals(list.isEmpty(), true));
 		
 	}
 	
