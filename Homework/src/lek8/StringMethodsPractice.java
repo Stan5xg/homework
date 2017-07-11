@@ -30,7 +30,17 @@ public class StringMethodsPractice {
 	}
 
 	public static String replace(String str, char oldChar, char newChar) {
-		return "b";
+		char[] chars = new char[str.length()];
+		for (int i = 0; i < str.length(); i++) {
+			char curr = str.charAt(i);
+			if (curr == oldChar) {
+				chars[i] = newChar;
+			} else {
+				chars[i] = curr;
+			}
+			
+		}
+		return new String(chars);
 	}
 
 	public static String trim(String str) {
