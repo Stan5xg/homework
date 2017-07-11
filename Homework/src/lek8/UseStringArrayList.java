@@ -51,6 +51,19 @@ public class UseStringArrayList {
 		list.remove(0);
 		list.remove(0);
 		System.out.println(Asserts.assertEquals(list.isEmpty(), true));
+		list.add("one");
+		System.out.println(Asserts.assertEquals(list.isEmpty(), false));
+		list.remove(0);
+		list.remove(0);
+		System.out.println(Asserts.assertEquals(list.isEmpty(), true));
+		list.add("one");
+		list.add("two");
+		list.add("three");
+		System.out.println(list);
+		
+		System.out.println(Asserts.assertEquals(list.remove("one"), true));
+		
+		
 		
 	}
 	

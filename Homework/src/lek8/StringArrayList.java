@@ -75,6 +75,16 @@ public class StringArrayList {
 		return size == 0;
 	}
 
+	public boolean remove(String str) {
+		for (int i = 0; i < size; i++) {
+			if (elements[i].equals(str)) {
+				remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
+
 	
 	
 	
