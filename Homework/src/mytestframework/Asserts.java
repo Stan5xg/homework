@@ -3,7 +3,7 @@ package mytestframework;
 public class Asserts {
 
 	public static boolean assertEquals(String actual, String expected) {
-		boolean equals = actual.equals(expected);
+		boolean equals = String.valueOf(actual).equals(expected);
 		if (!equals) {
 			printError(actual, expected);
 		}

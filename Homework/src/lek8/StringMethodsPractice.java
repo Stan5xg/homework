@@ -22,13 +22,14 @@ public class StringMethodsPractice {
 		System.out.println(Asserts.assertEquals(trim(s5), s5.trim()));
 		System.out.println(Asserts.assertEquals(trim(s6), s6.trim()));
 		System.out.println(Asserts.assertEquals(trim(s7), s7.trim()));
+		System.out.println(Asserts.assertEquals(trim(s8), "null"));
 
 		
 
 	}
 
 	public static String trim(String str) {
-		if (str.length() == 0) {
+		if (str == null || str.length() == 0) {
 			return str;
 		}
 
