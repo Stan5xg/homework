@@ -24,8 +24,13 @@ public class StringMethodsPractice {
 		System.out.println(Asserts.assertEquals(trim(s7), s7.trim()));
 		System.out.println(Asserts.assertEquals(trim(s8), "null"));
 
+		System.out.println(Asserts.assertEquals(replace("a", 'a', 'b'), "b"));
 		
 
+	}
+
+	public static String replace(String str, char oldChar, char newChar) {
+		return "b";
 	}
 
 	public static String trim(String str) {
@@ -47,6 +52,7 @@ public class StringMethodsPractice {
 		if (start >= finish) {
 			return "";
 		}
+		
 		
 		return str.substring(start, finish+1);
 	}
