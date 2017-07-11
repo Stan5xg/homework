@@ -36,6 +36,18 @@ public class UseStringArrayList {
 		
 		System.out.println(Asserts.assertEquals(list.get(0), "three"));
 		System.out.println(Asserts.assertEquals(list.get(20), "null"));
+		
+		System.out.println(Asserts.assertEquals(list.get(20), "null"));
+		
+		System.out.println(Asserts.assertEquals(list.set(1, "one"), true));
+		System.out.println(Asserts.assertEquals(list.get(1), "one"));
+		System.out.println(list);
+		
+		System.out.println(Asserts.assertEquals(list.set(3, "four"), false));
+		
+		System.out.println(Asserts.assertEquals(list.size(), 2));
+		
+		
 	}
 	
 }

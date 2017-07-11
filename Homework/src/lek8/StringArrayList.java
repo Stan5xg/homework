@@ -58,6 +58,21 @@ public class StringArrayList {
 		}
 		return elements[i];
 	}
+
+	public boolean set(int i, String string) {
+		if (i >= size || i < 0) {
+			return false;
+		}
+		elements[i] = string;
+		return true;
+	}
+
+	public int size() {
+		return size;
+	}
+
+	
+	
 	
 	
 
