@@ -47,6 +47,7 @@ public class UseStringArrayList {
 		
 		System.out.println(Asserts.assertEquals(list.size(), 2));
 		
+		System.out.println(Asserts.assertEquals(list.isEmpty(), false));
 		
 	}
 	
