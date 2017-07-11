@@ -14,11 +14,19 @@ public class StringMethodsPractice {
 		String s6 = "";
 		
 		System.out.println(Asserts.assertEquals(trim(s1), s2));		
+		System.out.println(Asserts.assertEquals(trim(s2), s2));		
+
 	}
 
 	public static String trim(String str) {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) > ' ') {
+				sb.append(str.charAt(i));
+			}
+		}
 		
-		return str.substring(3,str.length() - 1);
+		return sb.toString();
 	}
 
 
