@@ -20,11 +20,17 @@ public class StringMethodsPractice {
 		System.out.println(Asserts.assertEquals(trim(s3), s2));
 		System.out.println(Asserts.assertEquals(trim(s4), s2));
 		System.out.println(Asserts.assertEquals(trim(s5), s5.trim()));
+		System.out.println(Asserts.assertEquals(trim(s6), s6.trim()));
+
 		
 
 	}
 
 	public static String trim(String str) {
+		if (str.length() == 0) {
+			return str;
+		}
+
 		int start = 0;
 		int finish = str.length() - 1;
 		
@@ -35,7 +41,6 @@ public class StringMethodsPractice {
 		while(str.charAt(finish) == ' ' &&  finish > start) {
 			finish--;
 		}
-		
 		
 		return str.substring(start, finish+1);
 	}
