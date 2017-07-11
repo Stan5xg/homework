@@ -21,6 +21,7 @@ public class StringMethodsPractice {
 		System.out.println(Asserts.assertEquals(trim(s4), s2));
 		System.out.println(Asserts.assertEquals(trim(s5), s5.trim()));
 		System.out.println(Asserts.assertEquals(trim(s6), s6.trim()));
+		System.out.println(Asserts.assertEquals(trim(s7), s7.trim()));
 
 		
 
@@ -40,6 +41,10 @@ public class StringMethodsPractice {
 		
 		while(str.charAt(finish) == ' ' &&  finish > start) {
 			finish--;
+		}
+				
+		if (start >= finish) {
+			return "";
 		}
 		
 		return str.substring(start, finish+1);
