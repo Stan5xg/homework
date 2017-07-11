@@ -15,16 +15,18 @@ public class StringMethodsPractice {
 		String s7 = "   ";
 		String s8 = null;
 		
-		System.out.println(Asserts.assertEquals(trim(s1), s2));		
-		System.out.println(Asserts.assertEquals(trim(s2), s2));
-		System.out.println(Asserts.assertEquals(trim(s3), s2));
-		System.out.println(Asserts.assertEquals(trim(s4), s2));
-		System.out.println(Asserts.assertEquals(trim(s5), s5.trim()));
-		System.out.println(Asserts.assertEquals(trim(s6), s6.trim()));
-		System.out.println(Asserts.assertEquals(trim(s7), s7.trim()));
-		System.out.println(Asserts.assertEquals(trim(s8), "null"));
+//		System.out.println(Asserts.assertEquals(trim(s1), s2));		
+//		System.out.println(Asserts.assertEquals(trim(s2), s2));
+//		System.out.println(Asserts.assertEquals(trim(s3), s2));
+//		System.out.println(Asserts.assertEquals(trim(s4), s2));
+//		System.out.println(Asserts.assertEquals(trim(s5), s5.trim()));
+//		System.out.println(Asserts.assertEquals(trim(s6), s6.trim()));
+//		System.out.println(Asserts.assertEquals(trim(s7), s7.trim()));
+//		System.out.println(Asserts.assertEquals(trim(s8), "null"));
 
 		System.out.println(Asserts.assertEquals(replace("a", 'a', 'b'), "b"));
+		System.out.println(Asserts.assertEquals(replace("aaaa", 'a', 'b'), "bbbb"));
+		System.out.println(Asserts.assertEquals(replace("a dsfasdfa a a", 'a', 'b'), "b dsfbsdfb b b"));
 		
 
 	}
