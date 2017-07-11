@@ -62,6 +62,8 @@ public class UseStringArrayList {
 		System.out.println(list);
 		
 		System.out.println(Asserts.assertEquals(list.remove("one"), true));
+		System.out.println(Asserts.assertEquals(list.remove("five"), false));
+		System.out.println(Asserts.assertEquals(list.remove(null), false));
 		
 		
 		
