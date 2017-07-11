@@ -35,6 +35,9 @@ public class UseStringLinkedList {
 		list.add("four");
 		list.add("five");
 		System.out.println(Asserts.assertEquals(list.remove(3), "five"));
+		
+		System.out.println(Asserts.assertEquals(list.remove(30), "null"));
+		
 	}
 
 }
