@@ -34,7 +34,7 @@ public class UseStringArrayList {
 		
 		System.out.println(list);
 		
-		System.out.println(Asserts.assertEquals(list.get(0), "four"));
+		System.out.println(Asserts.assertEquals(list.get(0), "three"));
 	}
 	
 }

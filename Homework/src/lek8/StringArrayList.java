@@ -51,6 +51,10 @@ public class StringArrayList {
 		elements[size] = null;
 		
 	}
+
+	public String get(int i) {
+		return elements[i];
+	}
 	
 	
 
