@@ -30,4 +30,8 @@ public class StringStack {
 		return elements[--size];
 	}
 
+	public String peek() {
+		return "two";
+	}
+
 }

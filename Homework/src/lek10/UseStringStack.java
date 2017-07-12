@@ -18,5 +18,12 @@ public class UseStringStack {
 		System.out.println(Asserts.assertEquals(stack.pop(), "one"));
 		System.out.println(Asserts.assertEquals(stack.pop(), "null"));
 		
+		stack.push("one");
+		stack.push("two");
+		
+		System.out.println("========== peek =========");
+		System.out.println(Asserts.assertEquals(stack.peek(), "two"));
+		
+		
 	}
 }
