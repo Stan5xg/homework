@@ -24,14 +24,11 @@ public class StringStack {
 	}
 
 	public String pop() {
-		if (size <= 0) {
-			return null;
-		}
-		return elements[--size];
+		return size <= 0 ? null : elements[--size];
 	}
 
 	public String peek() {
-		return elements[size-1];
+		return size <= 0 ? null : elements[size-1];
 	}
 
 }
