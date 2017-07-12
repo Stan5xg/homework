@@ -31,5 +31,11 @@ public class UseStringStack {
 		System.out.println(Asserts.assertEquals(stack.peek(), "null"));
 		
 		
+		System.out.println("========== size =========");
+		System.out.println(Asserts.assertEquals(stack.size(), 0));
+		stack.push("one");
+		System.out.println(Asserts.assertEquals(stack.size(), 1));
+		
+		
 	}
 }
