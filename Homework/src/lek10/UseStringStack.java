@@ -23,6 +23,8 @@ public class UseStringStack {
 		
 		System.out.println("========== peek =========");
 		System.out.println(Asserts.assertEquals(stack.peek(), "two"));
+		stack.push("three");	
+		System.out.println(Asserts.assertEquals(stack.peek(), "three"));
 		
 		
 	}

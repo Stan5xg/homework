@@ -31,7 +31,7 @@ public class StringStack {
 	}
 
 	public String peek() {
-		return "two";
+		return elements[size-1];
 	}
 
 }
