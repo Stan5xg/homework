@@ -31,4 +31,9 @@ public class StringStack {
 		return size <= 0 ? null : elements[size-1];
 	}
 
+	public int size() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
