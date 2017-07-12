@@ -15,16 +15,16 @@ public class StringStack {
 	}
 	
 
-	public boolean put(String string) {
+	public boolean push(String string) {
 		if (size >= elements.length) {
 			return false;
 		}
-		size ++;
+		elements[size++] = string;
 		return true;
 	}
 
 	public String pop() {
-		return "three";
+		return elements[--size];
 	}
 
 }
