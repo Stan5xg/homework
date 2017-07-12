@@ -1,5 +1,7 @@
 package lek10;
 
+import java.util.Arrays;
+
 public class StringStack {
 
 	private static final int DEFAULT_MAX_SIZE = 3;
@@ -33,6 +35,11 @@ public class StringStack {
 
 	public int size() {
 		return size;
+	}
+	
+	@Override
+	public String toString() {
+		return Arrays.toString(Arrays.copyOf(elements,size));
 	}
 
 }

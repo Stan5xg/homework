@@ -35,7 +35,13 @@ public class UseStringStack {
 		System.out.println(Asserts.assertEquals(stack.size(), 0));
 		stack.push("one");
 		System.out.println(Asserts.assertEquals(stack.size(), 1));
+		stack.push("two");
+		System.out.println(Asserts.assertEquals(stack.size(), 2));
 		
-		
+		System.out.println("========== toString =========");
+		System.out.println(Asserts.assertEquals(stack.toString(), "[one, two]"));
+		stack.pop();
+		stack.pop();
+		System.out.println(Asserts.assertEquals(stack.toString(), "[]"));
 	}
 }
