@@ -19,20 +19,24 @@ class DiscardPile extends CardPile {
 		if (empty()) {
 			return;
 		}
-		Card topCard = pop();
-		for (int i = 0; i < 4; i++) {
-			if (Solitare.suitPile[i].canTake(topCard)) {
-				Solitare.suitPile[i].push(topCard);
-				return;
-			}
+		if (Solitare.selected == null) {
+			Solitare.selected = pop();
+			Solitare.selectedSource = this;
 		}
-		for (int i = 0; i < 7; i++) {
-			if (Solitare.tableau[i].canTake(topCard)) {
-				Solitare.tableau[i].push(topCard);
-				return;
-			}
-		}
-		// nobody can use it, put it back on our list
-		push(topCard);
+//		Card topCard = pop();
+//		for (int i = 0; i < 4; i++) {
+//			if (Solitare.suitPile[i].canTake(topCard)) {
+//				Solitare.suitPile[i].push(topCard);
+//				return;
+//			}
+//		}
+//		for (int i = 0; i < 7; i++) {
+//			if (Solitare.tableau[i].canTake(topCard)) {
+//				Solitare.tableau[i].push(topCard);
+//				return;
+//			}
+//		}
+//		// nobody can use it, put it back on our list
+//		push(topCard);
 	}
 }

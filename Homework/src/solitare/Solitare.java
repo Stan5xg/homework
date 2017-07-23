@@ -10,6 +10,8 @@ public class Solitare extends Applet {
 	static TablePile tableau[];
 	static SuitPile suitPile[];
 	static CardPile allPiles[];
+	static Card selected = null;
+	static CardPile selectedSource = null;
 
 	@Override
 	public void init() {
