@@ -36,6 +36,7 @@ public class Solitare extends Applet {
 			allPiles[i].display(g);
 		}
 	}
+	
 
 	@Override
 	public boolean mouseDown(Event evt, int x, int y) {

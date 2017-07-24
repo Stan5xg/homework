@@ -39,6 +39,14 @@ class CardPile {
 		}
 		return result;
 	}
+	
+	public Card peek() {
+		Card result = null;
+		if (firstCard != null) {
+			result = firstCard;
+		}
+		return result;		
+	}
 
 	// the following are sometimes overridden
 

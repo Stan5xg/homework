@@ -19,9 +19,11 @@ class DiscardPile extends CardPile {
 		if (empty()) {
 			return;
 		}
+		System.out.println("selected");
 		if (Solitare.selected == null) {
 			Solitare.selected = pop();
 			Solitare.selectedSource = this;
+			Solitare.selected.select();
 		}
 //		Card topCard = pop();
 //		for (int i = 0; i < 4; i++) {
