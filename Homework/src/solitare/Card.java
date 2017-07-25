@@ -23,6 +23,7 @@ class Card {
 	private final int suit;
 	private boolean faceup;
 	private boolean selected;
+
 	
 	Card link;
 
@@ -35,6 +36,7 @@ class Card {
 	}
 	
 	public void draw(final Graphics g, final int x, final int y) { 
+		
 		// clear rectangle, draw border
 		g.clearRect(x, y, width, height);
 		g.setColor(Color.black);
@@ -125,4 +127,5 @@ class Card {
 	public int getSuit() {
 		return suit;
 	}
+
 }

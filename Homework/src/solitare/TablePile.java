@@ -4,6 +4,8 @@ import java.awt.Graphics;
 
 class TablePile extends CardPile {
 
+	private static final int OFFSET = 35;
+
 	TablePile(int x, int y, int c) {
 		// initialize the parent class
 		super(x, y);
@@ -27,7 +29,7 @@ class TablePile extends CardPile {
 
 	@Override
 	public boolean includes(int tx, int ty) {
-		// don't test bottom of card
+		//TODO test bottom of card
 		return x <= tx && tx <= x + Card.width && y <= ty;
 	}
 
@@ -37,12 +39,11 @@ class TablePile extends CardPile {
 			if (canTake(Solitare.peekSelected())) {
 				push(Solitare.getSelected());
 			}
+		} else {
+			
 		}
 		
 		
-//		if (empty()) {
-//			return;
-//		}
 //
 //		// if face down, then flip
 //		Card topCard = top();
@@ -70,6 +71,8 @@ class TablePile extends CardPile {
 //		push(topCard);
 	}
 
+
+
 	private int stackDisplay(Graphics g, Card aCard) {
 		int localy;
 		if (aCard == null) {
@@ -77,7 +80,7 @@ class TablePile extends CardPile {
 		}
 		localy = stackDisplay(g, aCard.link);
 		aCard.draw(g, x, localy);
-		return localy + 35;
+		return localy + OFFSET;
 	}
 
 	@Override
