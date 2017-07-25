@@ -12,11 +12,10 @@ public class Solitare extends Applet {
 	static TablePile tableau[];
 	static SuitPile suitPile[];
 	static CardPile allPiles[];
-//	static Card selected = null;
-	static CardPile selectedSource = null;
-	
-	
-	
+	static Card selected = null;
+	static Card behindSelected = null;
+	// static CardPile selectedSource = null;
+	// static int selectionLastIndex = 0;
 
 	@Override
 	public void init() {
@@ -41,7 +40,6 @@ public class Solitare extends Applet {
 			allPiles[i].display(g);
 		}
 	}
-	
 
 	@Override
 	public boolean mouseDown(Event evt, int x, int y) {
@@ -50,44 +48,23 @@ public class Solitare extends Applet {
 				allPiles[i].select(x, y);
 				repaint();
 				return true;
-			} 
+			}
 		}
 		return true;
 	}
 
-	public static boolean hasSelection() {
-		return selectedSource != null;
-	}
-
-	public static void setSelection(CardPile pile) {
-		pile.top().select();
-		selectedSource = pile;
-	}
-
-	public static Card peekSelected() {
-		if (!hasSelection()) {
-			return null;
-		}
-		return selectedSource.top();
-	}
-
-	public static Card getSelected() {
-		if (!hasSelection()) {
-			return null;
-		}
-		Card selected = selectedSource.pop();
-		selected.deselect();
-		removeSelection();
-		return selected;
+	public static void setSelected(Card select, Card behindSelected) {
+		Solitare.behindSelected = behindSelected;
+		Solitare.selected = select;
+		Solitare.selected.select();
 	}
 
 	public static void removeSelection() {
-		if (hasSelection()) {
-			selectedSource.top().deselect();
-			selectedSource = null;
-		}		
-	}	
-	
+		Solitare.behindSelected = null;
+		if (Solitare.selected != null) {
+			Solitare.selected.deselect();
+			Solitare.selected = null;
+		}
+	}
 
-	
 }

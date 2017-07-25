@@ -19,8 +19,10 @@ class DiscardPile extends CardPile {
 		if (empty()) {
 			return;
 		}
+		Card select = top();
+		Card behindSelect = select.link;
 		Solitare.removeSelection();
-		Solitare.setSelection(this);
+		Solitare.setSelected(select, behindSelect);
 //		Card topCard = pop();
 //		for (int i = 0; i < 4; i++) {
 //			if (Solitare.suitPile[i].canTake(topCard)) {

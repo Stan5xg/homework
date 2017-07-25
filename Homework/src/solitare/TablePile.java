@@ -35,13 +35,14 @@ class TablePile extends CardPile {
 
 	@Override
 	public void select(int tx, int ty) {
-		if (Solitare.hasSelection()) {
-			if (canTake(Solitare.peekSelected())) {
-				push(Solitare.getSelected());
-			}
-		} else {
-			
-		}
+//		if (Solitare.hasSelection()) {
+//			Card head = Solitare.getSelectedHead();
+//			if (canTake(head)) {
+//				takeAll(head, Solitare.selectedSource);
+//			}
+//		} else {
+//			
+//		}
 		
 		
 //
