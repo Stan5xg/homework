@@ -78,16 +78,14 @@ public class Solitare extends Applet {
 		selected.switchSelection();
 		return selected;
 	}
-	
-	
-	
+
+	public static void removeSelection() {
+		if (hasSelection()) {
+			selectedSource.top().switchSelection();
+			selectedSource = null;
+		}		
+	}	
 	
 
 	
-//	public static Card getSelected() {
-//		selected.switchSelection();
-//		Card result = Source.;
-//		selected = null;
-//		;
-//	}
 }
