@@ -63,6 +63,26 @@ public class Solitare extends Applet {
 		selectedSource = pile;
 	}
 
+	public static Card peekSelected() {
+		if (!hasSelection()) {
+			return null;
+		}
+		return selectedSource.top();
+	}
+
+	public static Card getSelected() {
+		if (!hasSelection()) {
+			return null;
+		}
+		Card selected = selectedSource.pop();
+		selected.switchSelection();
+		return selected;
+	}
+	
+	
+	
+	
+
 	
 //	public static Card getSelected() {
 //		selected.switchSelection();

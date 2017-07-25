@@ -33,11 +33,13 @@ class TablePile extends CardPile {
 
 	@Override
 	public void select(int tx, int ty) {
-//		if (Solitare.selected != null) {
-//			if (canTake(Solitare.selected)) {
-//				push(Solitare.getSelected());
-//			}
-//		}
+		if (Solitare.hasSelection()) {
+			if (canTake(Solitare.peekSelected())) {
+				push(Solitare.getSelected());
+			}
+		}
+		
+		
 //		if (empty()) {
 //			return;
 //		}
