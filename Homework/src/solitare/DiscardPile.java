@@ -19,9 +19,8 @@ class DiscardPile extends CardPile {
 		if (empty()) {
 			return;
 		}
-		System.out.println("selected");
 		if (Solitare.selected == null) {
-			Solitare.selected = peek();
+			Solitare.selected = top();
 			//Solitare.selectedSource = this;
 			Solitare.selected.select();
 		}

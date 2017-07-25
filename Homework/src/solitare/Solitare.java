@@ -12,6 +12,9 @@ public class Solitare extends Applet {
 	static CardPile allPiles[];
 	static Card selected = null;
 	//static CardPile selectedSource = null;
+	
+	
+	
 
 	@Override
 	public void init() {
@@ -45,12 +48,7 @@ public class Solitare extends Applet {
 				allPiles[i].select(x, y);
 				repaint();
 				return true;
-			} else {
-				if (selected != null) {
-					selected.select();
-					selected = null;					
-				}
-			}
+			} 
 		}
 		return true;
 	}
