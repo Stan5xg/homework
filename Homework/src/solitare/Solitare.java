@@ -4,14 +4,16 @@ import java.applet.Applet;
 import java.awt.Event;
 import java.awt.Graphics;
 
+import javax.xml.transform.Source;
+
 public class Solitare extends Applet {
 	static DeckPile deckPile;
 	static DiscardPile discardPile;
 	static TablePile tableau[];
 	static SuitPile suitPile[];
 	static CardPile allPiles[];
-	static Card selected = null;
-	//static CardPile selectedSource = null;
+//	static Card selected = null;
+	static CardPile selectedSource = null;
 	
 	
 	
@@ -52,4 +54,20 @@ public class Solitare extends Applet {
 		}
 		return true;
 	}
+
+	public static boolean hasSelection() {
+		return selectedSource != null;
+	}
+
+	public static void setSelection(CardPile pile) {
+		selectedSource = pile;
+	}
+
+	
+//	public static Card getSelected() {
+//		selected.switchSelection();
+//		Card result = Source.;
+//		selected = null;
+//		;
+//	}
 }

@@ -110,7 +110,7 @@ class Card {
 		faceup = !faceup;
 	}
 	
-	public void select() {
+	public void switchSelection() {
 		selected = !selected;
 	}
 	
