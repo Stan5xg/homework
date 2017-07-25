@@ -60,7 +60,7 @@ public class Solitare extends Applet {
 	}
 
 	public static void setSelection(CardPile pile) {
-		pile.top().switchSelection();
+		pile.top().select();
 		selectedSource = pile;
 	}
 
@@ -76,13 +76,14 @@ public class Solitare extends Applet {
 			return null;
 		}
 		Card selected = selectedSource.pop();
-		selected.switchSelection();
+		selected.deselect();
+		removeSelection();
 		return selected;
 	}
 
 	public static void removeSelection() {
 		if (hasSelection()) {
-			selectedSource.top().switchSelection();
+			selectedSource.top().deselect();
 			selectedSource = null;
 		}		
 	}	

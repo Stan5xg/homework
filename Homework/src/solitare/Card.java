@@ -110,8 +110,12 @@ class Card {
 		faceup = !faceup;
 	}
 	
-	public void switchSelection() {
-		selected = !selected;
+	public void select() {
+		selected = true;
+	}
+
+	public void deselect() {
+		selected = false;
 	}
 	
 	public int getRank() {
