@@ -65,4 +65,10 @@ class CardPile {
 		return false;
 	}
 
+	public void split(Card card) {
+		firstCard = card.link;		
+	}
+
+
+
 }

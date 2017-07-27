@@ -29,12 +29,40 @@ class TablePile extends CardPile {
 
 	@Override
 	public boolean includes(int tx, int ty) {
-		//TODO test bottom of card
-		return x <= tx && tx <= x + Card.width && y <= ty;
+		int count = countCards();
+		return x <= tx && tx <= x + Card.width && y <= ty && y + Card.height + count*OFFSET >= ty;
+	}
+
+	private int countCards() {
+		int count = 0;
+		if (!empty()) {
+			Card current = top();
+			while (current != null) {
+				count ++;
+				current = current.link;
+			}
+		}
+		return count;
 	}
 
 	@Override
 	public void select(int tx, int ty) {
+		if (Solitare.hasSelection()) {
+			Card selected = Solitare.selected;
+			if (canTake(selected)) {
+				Solitare.selectedSrc.split(selected);
+				push(selected);
+			}
+			Solitare.removeSelection();
+		} else {
+			int count = countCards();
+			Card curr = top();
+			int yMinCurr = y + OFFSET * count;
+			while (ty < yMinCurr && curr != null) {
+				
+			}
+		}
+		
 //		if (Solitare.hasSelection()) {
 //			Card head = Solitare.getSelectedHead();
 //			if (canTake(head)) {

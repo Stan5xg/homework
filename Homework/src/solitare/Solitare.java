@@ -13,7 +13,8 @@ public class Solitare extends Applet {
 	static SuitPile suitPile[];
 	static CardPile allPiles[];
 	static Card selected = null;
-	static Card behindSelected = null;
+	static CardPile selectedSrc = null;
+	//static Card afterSelected = null;
 	// static CardPile selectedSource = null;
 	// static int selectionLastIndex = 0;
 
@@ -53,18 +54,23 @@ public class Solitare extends Applet {
 		return true;
 	}
 
-	public static void setSelected(Card select, Card behindSelected) {
-		Solitare.behindSelected = behindSelected;
+	public static void setSelected(Card select, CardPile selectSrc) {
 		Solitare.selected = select;
+		Solitare.selectedSrc = selectSrc;
 		Solitare.selected.select();
 	}
 
 	public static void removeSelection() {
-		Solitare.behindSelected = null;
 		if (Solitare.selected != null) {
 			Solitare.selected.deselect();
 			Solitare.selected = null;
+			Solitare.selectedSrc = null;
 		}
+	}
+	
+
+	public static boolean hasSelection() {
+		return selected != null;
 	}
 
 }
