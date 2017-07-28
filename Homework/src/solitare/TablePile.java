@@ -4,8 +4,6 @@ import java.awt.Graphics;
 
 class TablePile extends CardPile {
 
-	private static final int OFFSET = 35;
-
 	TablePile(int x, int y, int c) {
 		// initialize the parent class
 		super(x, y);
@@ -29,78 +27,41 @@ class TablePile extends CardPile {
 
 	@Override
 	public boolean includes(int tx, int ty) {
-		int count = countCards();
-		return x <= tx && tx <= x + Card.width && y <= ty && y + Card.height + count*OFFSET >= ty;
-	}
-
-	private int countCards() {
-		int count = 0;
-		if (!empty()) {
-			Card current = top();
-			while (current != null) {
-				count ++;
-				current = current.link;
-			}
-		}
-		return count;
+		// don't test bottom of card
+		return x <= tx && tx <= x + Card.width && y <= ty;
 	}
 
 	@Override
 	public void select(int tx, int ty) {
-		if (Solitare.hasSelection()) {
-			Card selected = Solitare.selected;
-			if (canTake(selected)) {
-				Solitare.selectedSrc.split(selected);
-				push(selected);
-			}
-			Solitare.removeSelection();
-		} else {
-			int count = countCards();
-			Card curr = top();
-			int yMinCurr = y + OFFSET * count;
-			while (ty < yMinCurr && curr != null) {
-				
+		if (empty()) {
+			return;
+		}
+
+		// if face down, then flip
+		Card topCard = top();
+		if (!topCard.isFaceUp()) {
+			topCard.flip();
+			return;
+		}
+
+		// else see if any suit pile can take card
+		topCard = pop();
+		for (int i = 0; i < 4; i++) {
+			if (Solitare.suitPile[i].canTake(topCard)) {
+				Solitare.suitPile[i].push(topCard);
+				return;
 			}
 		}
-		
-//		if (Solitare.hasSelection()) {
-//			Card head = Solitare.getSelectedHead();
-//			if (canTake(head)) {
-//				takeAll(head, Solitare.selectedSource);
-//			}
-//		} else {
-//			
-//		}
-		
-		
-//
-//		// if face down, then flip
-//		Card topCard = top();
-//		if (!topCard.isFaceUp()) {
-//			topCard.flip();
-//			return;
-//		}
-//
-//		// else see if any suit pile can take card
-//		topCard = pop();
-//		for (int i = 0; i < 4; i++) {
-//			if (Solitare.suitPile[i].canTake(topCard)) {
-//				Solitare.suitPile[i].push(topCard);
-//				return;
-//			}
-//		}
-//		// else see if any other table pile can take card
-//		for (int i = 0; i < 7; i++) {
-//			if (Solitare.tableau[i].canTake(topCard)) {
-//				Solitare.tableau[i].push(topCard);
-//				return;
-//			}
-//		}
-//		// else put it back on our pile
-//		push(topCard);
+		// else see if any other table pile can take card
+		for (int i = 0; i < 7; i++) {
+			if (Solitare.tableau[i].canTake(topCard)) {
+				Solitare.tableau[i].push(topCard);
+				return;
+			}
+		}
+		// else put it back on our pile
+		push(topCard);
 	}
-
-
 
 	private int stackDisplay(Graphics g, Card aCard) {
 		int localy;
@@ -109,7 +70,7 @@ class TablePile extends CardPile {
 		}
 		localy = stackDisplay(g, aCard.link);
 		aCard.draw(g, x, localy);
-		return localy + OFFSET;
+		return localy + 35;
 	}
 
 	@Override

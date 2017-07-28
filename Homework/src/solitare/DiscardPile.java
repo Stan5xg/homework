@@ -19,24 +19,20 @@ class DiscardPile extends CardPile {
 		if (empty()) {
 			return;
 		}
-		Card select = top();
-		//Card afterSelected = Solitare.deckPile.top();
-		Solitare.removeSelection();
-		Solitare.setSelected(select, this);
-//		Card topCard = pop();
-//		for (int i = 0; i < 4; i++) {
-//			if (Solitare.suitPile[i].canTake(topCard)) {
-//				Solitare.suitPile[i].push(topCard);
-//				return;
-//			}
-//		}
-//		for (int i = 0; i < 7; i++) {
-//			if (Solitare.tableau[i].canTake(topCard)) {
-//				Solitare.tableau[i].push(topCard);
-//				return;
-//			}
-//		}
-//		// nobody can use it, put it back on our list
-//		push(topCard);
+		Card topCard = pop();
+		for (int i = 0; i < 4; i++) {
+			if (Solitare.suitPile[i].canTake(topCard)) {
+				Solitare.suitPile[i].push(topCard);
+				return;
+			}
+		}
+		for (int i = 0; i < 7; i++) {
+			if (Solitare.tableau[i].canTake(topCard)) {
+				Solitare.tableau[i].push(topCard);
+				return;
+			}
+		}
+		// nobody can use it, put it back on our list
+		push(topCard);
 	}
 }

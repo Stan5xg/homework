@@ -4,19 +4,12 @@ import java.applet.Applet;
 import java.awt.Event;
 import java.awt.Graphics;
 
-import javax.xml.transform.Source;
-
 public class Solitare extends Applet {
 	static DeckPile deckPile;
 	static DiscardPile discardPile;
 	static TablePile tableau[];
 	static SuitPile suitPile[];
 	static CardPile allPiles[];
-	static Card selected = null;
-	static CardPile selectedSrc = null;
-	//static Card afterSelected = null;
-	// static CardPile selectedSource = null;
-	// static int selectionLastIndex = 0;
 
 	@Override
 	public void init() {
@@ -53,24 +46,4 @@ public class Solitare extends Applet {
 		}
 		return true;
 	}
-
-	public static void setSelected(Card select, CardPile selectSrc) {
-		Solitare.selected = select;
-		Solitare.selectedSrc = selectSrc;
-		Solitare.selected.select();
-	}
-
-	public static void removeSelection() {
-		if (Solitare.selected != null) {
-			Solitare.selected.deselect();
-			Solitare.selected = null;
-			Solitare.selectedSrc = null;
-		}
-	}
-	
-
-	public static boolean hasSelection() {
-		return selected != null;
-	}
-
 }

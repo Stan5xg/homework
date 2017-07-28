@@ -22,30 +22,22 @@ class Card {
 	private final int rank;
 	private final int suit;
 	private boolean faceup;
-	private boolean selected;
-
 	
 	Card link;
 
 	// constructor
-	Card(final int suitValue, final int rankValue) {
-		suit = suitValue;
-		rank = rankValue;
+	Card(final int sv, final int rv) {
+		suit = sv;
+		rank = rv;
 		faceup = false;
 		link = null;
 	}
 	
 	public void draw(final Graphics g, final int x, final int y) { 
-		
 		// clear rectangle, draw border
 		g.clearRect(x, y, width, height);
 		g.setColor(Color.black);
 		g.drawRect(x, y, width, height);
-		// draw selection frame
-		if (selected) {
-			g.setColor(Color.red);
-			g.drawRect(x-2, y-2, width+4, height+4);
-		}
 		// draw body of card
 		if (isFaceUp()) {
 			if (getColor() == red) {
@@ -112,14 +104,6 @@ class Card {
 		faceup = !faceup;
 	}
 	
-	public void select() {
-		selected = true;
-	}
-
-	public void deselect() {
-		selected = false;
-	}
-	
 	public int getRank() {
 		return rank;
 	}
@@ -127,5 +111,4 @@ class Card {
 	public int getSuit() {
 		return suit;
 	}
-
 }
