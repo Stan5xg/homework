@@ -41,12 +41,12 @@ class TablePile extends CardPile {
 		Card selectedCard = selected.getSelectedCard();
 		if (canTake(selectedCard)) {
 			CardPile buffer = new CardPile(0, 0);
-			Card curr = selected.pop(); 
-			buffer.push(curr);
-			while(curr != selectedCard && !selected.empty()) { 
+			Card curr; 
+			do { 
 				curr = selected.pop();
 				buffer.push(curr);
-			}
+			} while(curr != selectedCard && !selected.empty());
+				
 			while(!buffer.empty()) {
 				push(buffer.pop());
 			}
