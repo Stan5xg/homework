@@ -10,6 +10,7 @@ public class Solitare extends Applet {
 	static TablePile tableau[];
 	static SuitPile suitPile[];
 	static CardPile allPiles[];
+	static CardPile selected;
 
 	@Override
 	public void init() {
@@ -40,6 +41,7 @@ public class Solitare extends Applet {
 		for (int i = 0; i < 13; i++) {
 			if (allPiles[i].includes(x, y)) {
 				allPiles[i].select(x, y);
+				selected = allPiles[i];
 				repaint();
 				return true;
 			}

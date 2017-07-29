@@ -43,20 +43,26 @@ class CardPile {
 	// the following are sometimes overridden
 
 	public boolean includes(final int clickX, final int clickY) {
-		return x <= clickX && clickX <= x + Card.width && y <= clickY
-				&& clickY <= y + Card.height;
+		return x <= clickX && clickX <= x + Card.width && y <= clickY && clickY <= y + Card.height;
 	}
 
 	public void select(final int tx, final int ty) {
-		// do nothing
+		System.out.println(this.getClass().getName());
 	}
 
+	public boolean isSelected() {
+		return Solitare.selected == this;
+	}
 
 	public void display(final Graphics g) {
 		g.setColor(Color.black);
 		if (firstCard == null) {
 			g.drawRect(x, y, Card.width, Card.height);
 		} else {
+			if (isSelected()) {
+				g.setColor(Color.red);
+				g.drawRect(x - 3, y - 3, Card.width + 6, Card.height + 6);
+			}
 			firstCard.draw(g, x, y);
 		}
 	}
