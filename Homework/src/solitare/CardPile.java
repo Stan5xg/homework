@@ -50,9 +50,7 @@ class CardPile {
 		System.out.println(this.getClass().getName());
 	}
 
-	public boolean isSelected() {
-		return Solitare.selected == this;
-	}
+	
 
 	public void display(final Graphics g) {
 		g.setColor(Color.black);
@@ -67,4 +65,8 @@ class CardPile {
 		return false;
 	}
 
+	public boolean isSelected() {
+		return Solitare.selected == this;
+	}
+	
 }
