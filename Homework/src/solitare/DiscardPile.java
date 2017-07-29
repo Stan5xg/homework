@@ -41,6 +41,7 @@ class DiscardPile extends CardPile {
 	
 	@Override
 	public void display(final Graphics g) {
+		//FIXME probably code duplication
 		super.display(g);
 		if (isSelected()) {
 			g.setColor(Color.red);

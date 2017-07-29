@@ -68,5 +68,11 @@ class CardPile {
 	public boolean isSelected() {
 		return Solitare.selected == this;
 	}
+
+	public Card getSelectedCard() {
+		return top();
+	}
+	
+	
 	
 }
