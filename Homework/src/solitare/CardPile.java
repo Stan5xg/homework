@@ -59,10 +59,6 @@ class CardPile {
 		if (firstCard == null) {
 			g.drawRect(x, y, Card.width, Card.height);
 		} else {
-			if (isSelected()) {
-				g.setColor(Color.red);
-				g.drawRect(x - 3, y - 3, Card.width + 6, Card.height + 6);
-			}
 			firstCard.draw(g, x, y);
 		}
 	}

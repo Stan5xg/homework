@@ -1,5 +1,8 @@
 package solitare;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 class DiscardPile extends CardPile {
 
 	DiscardPile(int x, int y) {
@@ -35,4 +38,14 @@ class DiscardPile extends CardPile {
 		// nobody can use it, put it back on our list
 		push(topCard);
 	}
+	
+	@Override
+	public void display(final Graphics g) {
+		super.display(g);
+		if (isSelected()) {
+			g.setColor(Color.red);
+			g.drawRect(x-3, y-3, Card.width+6, Card.height+6);
+		}
+	}
+	
 }
