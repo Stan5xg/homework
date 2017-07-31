@@ -1,8 +1,21 @@
 package solitare;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 class TablePile extends CardPile {
+
+	private static final int OFFSET = 35;
+	
+	
+	private Card selected = null;
+	private int yMax;
+	
+	private int clickY = 0;
+	
+	private int rectTop = 0;
+	private int rectBottom = 0;
+	
 
 	TablePile(int x, int y, int c) {
 		// initialize the parent class
@@ -27,8 +40,7 @@ class TablePile extends CardPile {
 
 	@Override
 	public boolean includes(int tx, int ty) {
-		// don't test bottom of card
-		return x <= tx && tx <= x + Card.width && y <= ty;
+		return x <= tx && tx <= x + Card.width && y <= ty && ty <= yMax;
 	}
 
 	@Override
@@ -36,6 +48,13 @@ class TablePile extends CardPile {
 		if (Solitare.selected == null) {
 			return;
 		}
+		
+		if (isSelected()) {
+//			clickX = tx;
+			clickY = ty;
+			return;
+		}
+		
 		
 		CardPile selected = Solitare.selected;
 		Card selectedCard = selected.getSelectedCard();
@@ -53,35 +72,8 @@ class TablePile extends CardPile {
 			
 		}
 		
-//		if (empty()) {
-//			return;
-//		}
-//
-//		// if face down, then flip
-//		Card topCard = top();
-//		if (!topCard.isFaceUp()) {
-//			topCard.flip();
-//			return;
-//		}
-//
-//		// else see if any suit pile can take card
-//		topCard = pop();
-//		for (int i = 0; i < 4; i++) {
-//			if (Solitare.suitPile[i].canTake(topCard)) {
-//				Solitare.suitPile[i].push(topCard);
-//				return;
-//			}
-//		}
-//		// else see if any other table pile can take card
-//		for (int i = 0; i < 7; i++) {
-//			if (Solitare.tableau[i].canTake(topCard)) {
-//				Solitare.tableau[i].push(topCard);
-//				return;
-//			}
-//		}
-//		// else put it back on our pile
-//		push(topCard);
 	}
+
 
 	private int stackDisplay(Graphics g, Card aCard) {
 		int localy;
@@ -89,13 +81,32 @@ class TablePile extends CardPile {
 			return y;
 		}
 		localy = stackDisplay(g, aCard.link);
+		
+		if (aCard == top()) {
+			yMax = localy + Card.height;
+			rectBottom = yMax;
+		} else {
+			yMax = localy + OFFSET;
+		}
+		
+		if (clickY >= localy && clickY <= yMax) {
+			selected = aCard;
+			rectTop = localy;
+		}
+		
 		aCard.draw(g, x, localy);
-		return localy + 35;
+		return localy + OFFSET;
 	}
 
 	@Override
 	public void display(Graphics g) {
+		System.out.println(selected);
 		stackDisplay(g, top());
+		if (isSelected()) {
+			g.setColor(Color.red);
+			int rectHeight = rectBottom - rectTop;
+			g.drawRect(x - 3, rectTop - 3, Card.width + 6, rectHeight + 6);
+		}
 	}
 
 }
