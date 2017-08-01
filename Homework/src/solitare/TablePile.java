@@ -9,11 +9,7 @@ class TablePile extends CardPile {
 
 	private Card selected = null;
 	private int yMax;
-
-	private int clickY = 0;
-
-	private int rectTop = 0;
-	private int rectBottom = 0;
+	private int selectionTop;
 
 	TablePile(int x, int y, int c) {
 		// initialize the parent class
@@ -42,35 +38,45 @@ class TablePile extends CardPile {
 
 	@Override
 	public void select(int tx, int ty) {
-		clickY = ty;
-		System.out.println("-1");
-		if (Solitare.selected == null) {
+		CardPile selected = Solitare.selected;
+		System.out.println(selected);
+		if (selected == null) {
+			selectCards(ty);
+		} else {
+			takeCards(selected);			
+		}
+	}
+
+	private void selectCards(int ty) {
+		int yCurr = yMax - Card.height;
+		Card curr = top();
+		while(ty < yCurr && curr != null) {
+			curr = curr.link;
+			yCurr -= OFFSET;
+		}
+		if (curr.isFaceUp()) {
+			selected = curr;
+			selectionTop = yCurr;			
+		}
+	}
+
+	private void takeCards(CardPile selected) {
+		Card selectedCard = selected.getSelectedCard();
+		if (selectedCard == null) {
 			return;
 		}
-
-		CardPile selected = Solitare.selected;
-		Card selectedCard = selected.getSelectedCard();
-		System.out.println(selectedCard.getColor() + " " + selectedCard.getRank() + " " + selectedCard.getSuit());
-		System.out.println(canTake(selectedCard));
 		if (canTake(selectedCard)) {
-			System.out.println("1");
 			CardPile buffer = new CardPile(0, 0);
-			System.out.println("2");
 			Card curr;
-			System.out.println("3");
 			do {
 				curr = selected.pop();
 				buffer.push(curr);
 			} while (curr != selectedCard && !selected.empty());
-			System.out.println("4");
 
 			while (!buffer.empty()) {
 				push(buffer.pop());
 			}
-			System.out.println("5");
-
 		}
-
 	}
 
 	private int stackDisplay(Graphics g, Card aCard) {
@@ -79,22 +85,12 @@ class TablePile extends CardPile {
 			return y;
 		}
 		localy = stackDisplay(g, aCard.link);
-
 		if (aCard == top()) {
 			yMax = localy + Card.height;
-			rectBottom = yMax;
 			if (!aCard.isFaceUp()) {
 				aCard.flip();
 			}
-		} else {
-			yMax = localy + OFFSET;
-		}
-
-		if (clickY >= localy && clickY <= yMax && aCard.isFaceUp()) {
-			selected = aCard;
-			rectTop = localy;
-		}
-
+		} 
 		aCard.draw(g, x, localy);
 		return localy + OFFSET;
 	}
@@ -107,10 +103,14 @@ class TablePile extends CardPile {
 	@Override
 	public void display(Graphics g) {
 		stackDisplay(g, top());
+		drawSelection(g);
+	}
+
+	private void drawSelection(Graphics g) {
 		if (isSelected()) {
 			g.setColor(Color.red);
-			int rectHeight = rectBottom - rectTop;
-			g.drawRect(x - 3, rectTop - 3, Card.width + 6, rectHeight + 6);
+			int rectHeight = yMax - selectionTop;
+			g.drawRect(x - 3, selectionTop - 3, Card.width + 6, rectHeight + 6);
 		} else {
 			selected = null;
 		}

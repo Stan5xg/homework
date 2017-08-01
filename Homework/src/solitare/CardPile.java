@@ -47,7 +47,6 @@ class CardPile {
 	}
 
 	public void select(final int tx, final int ty) {
-		System.out.println(this.getClass().getName());
 	}
 
 	
@@ -61,12 +60,22 @@ class CardPile {
 		}
 	}
 
+	public void drawSelectionRect(final Graphics g) {
+		if (isSelected()) {
+			g.setColor(Color.red);
+			g.drawRect(x-3, y-3, Card.width+6, Card.height+6);
+		}
+	}
+	
+	
+
 	public boolean canTake(final Card aCard) {
 		return false;
 	}
 
 	public boolean isSelected() {
-		return Solitare.selected == this;
+		CardPile selected = Solitare.selected;
+		return  selected == this && selected.getSelectedCard() != null;
 	}
 
 	public Card getSelectedCard() {

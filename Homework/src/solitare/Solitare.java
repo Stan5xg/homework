@@ -44,11 +44,16 @@ public class Solitare extends Applet {
 				if (!allPiles[i].empty()) {
 					selected = allPiles[i];
 				}
-				repaint();
-				return true;
+//				repaint();
+//				return true;
 			}
 		}
-		selected = null;
+//		selected = null;
+		
+		if (selected != null && selected.getSelectedCard() == null) {
+			selected = null;
+		}
+		
 		repaint();
 		return true;
 	}
