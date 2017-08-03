@@ -65,9 +65,9 @@ public class Solitare extends Applet {
 		}
 		
 		//if selected the same card or the card remains the same - reset
-//		if (selectedAfter == selectedBefore) {
-//			selected = null;
-//		}
+		if (selectedAfter == selectedBefore) {
+			selected = null;
+		}
 		
 
 		

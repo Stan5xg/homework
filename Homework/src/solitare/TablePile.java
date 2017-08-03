@@ -40,11 +40,10 @@ class TablePile extends CardPile {
 	public void select(int tx, int ty) {
 		CardPile selected = Solitare.selected;
 		System.out.println(selected);
-		if (selected == null) {
+		if (!takeCards(selected)) {
 			selectCards(ty);
-		} else {
-			takeCards(selected);			
 		}
+//		takeCards(selected);
 	}
 
 	private void selectCards(int ty) {
@@ -60,10 +59,13 @@ class TablePile extends CardPile {
 		}
 	}
 
-	private void takeCards(CardPile selected) {
+	private boolean takeCards(CardPile selected) {
+		if (selected == null) {
+			return false;
+		}
 		Card selectedCard = selected.getSelectedCard();
 		if (selectedCard == null) {
-			return;
+			return false;
 		}
 		if (canTake(selectedCard)) {
 			CardPile buffer = new CardPile(0, 0);
@@ -76,7 +78,9 @@ class TablePile extends CardPile {
 			while (!buffer.empty()) {
 				push(buffer.pop());
 			}
+			return true;
 		}
+		return false;
 	}
 
 	private int stackDisplay(Graphics g, Card aCard) {
