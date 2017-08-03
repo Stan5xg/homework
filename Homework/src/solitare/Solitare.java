@@ -38,21 +38,38 @@ public class Solitare extends Applet {
 
 	@Override
 	public boolean mouseDown(Event evt, int x, int y) {
+		
+		Card selectedBefore = null;
+		if (selected != null) {
+			selectedBefore = selected.getSelectedCard();
+		}
+		
 		for (int i = 0; i < 13; i++) {
 			if (allPiles[i].includes(x, y)) {
 				allPiles[i].select(x, y);
 				if (!allPiles[i].empty()) {
 					selected = allPiles[i];
 				}
-//				repaint();
-//				return true;
-			}
+				break;
+			} 
 		}
-//		selected = null;
 		
-		if (selected != null && selected.getSelectedCard() == null) {
+		Card selectedAfter = null;
+		if (selected != null) {
+			selectedAfter = selected.getSelectedCard();
+		}
+		
+		//if didn't select any cards - reset
+		if (selectedAfter == null) {
 			selected = null;
 		}
+		
+		//if selected the same card or the card remains the same - reset
+//		if (selectedAfter == selectedBefore) {
+//			selected = null;
+//		}
+		
+
 		
 		repaint();
 		return true;

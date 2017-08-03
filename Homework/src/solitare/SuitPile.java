@@ -20,6 +20,9 @@ class SuitPile extends CardPile {
 
 	@Override
 	public boolean canTake(Card aCard) {
+		if (aCard == null) {
+			return false;
+		}
 		if (empty()) {
 			return aCard.getRank() == 0;
 		}
