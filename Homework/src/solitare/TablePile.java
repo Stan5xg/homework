@@ -39,7 +39,6 @@ class TablePile extends CardPile {
 	@Override
 	public void select(int tx, int ty) {
 		CardPile selected = Solitare.selected;
-		System.out.println(selected);
 		if (!takeCards(selected)) {
 			selectCards(ty);
 		}
