@@ -6,7 +6,7 @@ public class UseDictionary {
 	
 	public static void main(String[] args) {
 		
-		Dictionary d = new Dictionary();
+		Dictionary<String,String> d = new Dictionary<>();
 		
 		d.put("Pete", "New York");
 		d.put("John", "Boston");
@@ -25,7 +25,7 @@ public class UseDictionary {
 		d.put("Вася", "Петербург");
 		System.out.println(d.get("Вася"));
 		
-		for (Pair pair : d) {
+		for (Pair<String, String> pair : d) {
 			System.out.println(pair.key + " : " + pair.value);
 		}
 		
