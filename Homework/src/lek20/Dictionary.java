@@ -24,12 +24,20 @@ public class Dictionary<K,V> implements Iterable<Pair<K,V>> {
 	List<Pair<K,V>>[] data = new List[MAX];
 
 	public void put(K key, V value) {
+		/*
+		 * 3 cases: 
+		 * 1. There is no ArrayList in the cell
+		 * 2. There is ArrayList, but no Pair with this key
+		 * 3. There is ArrayList and Pair with this key
+		 * 
+		 */
+		
 		int index = hash(key);
 		if (data[index] == null) {
 			data[index] = new ArrayList<>();
 		}
 
-		Pair<K,V> pair = getPair(key);
+		Pair<K,V> pair = getPair(index, key);
 
 		if (pair == null) {
 			data[index].add(new Pair<>(key, value));
@@ -50,7 +58,11 @@ public class Dictionary<K,V> implements Iterable<Pair<K,V>> {
 	}
 
 	private Pair<K, V> getPair(K key) {
-		int index = hash(key);
+		return getPair(hash(key), key);
+	}
+	
+	private Pair<K,V> getPair(int hash, K key) {
+		int index = hash;
 		List<Pair<K,V>> list = data[index];
 		if (list == null) { // guard condition
 			return null;
@@ -60,7 +72,6 @@ public class Dictionary<K,V> implements Iterable<Pair<K,V>> {
 				return pair;
 			}
 		}
-
 		return null;
 	}
 
