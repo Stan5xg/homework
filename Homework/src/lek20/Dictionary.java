@@ -8,6 +8,7 @@ import lek20.Dictionary.Pair;
 
 public class Dictionary<K,V> implements Iterable<Pair<K,V>> {
 
+	private static final double LOAD_FACTOR = 0.75;
 	private static final int MAX = 3;
 
 	public static class Pair<K,V> {
@@ -48,21 +49,27 @@ public class Dictionary<K,V> implements Iterable<Pair<K,V>> {
 		int index = hash(key);
 		if (data[index] == null) {
 			data[index] = new ArrayList<>();
-			data[index].add(new Pair<>(key, value));
-			size++;
+			insertPair(key, value, index);
 			return;
 		}
 
 		Pair<K,V> pair = getPair(index, key);
 
 		if (pair == null) {
-			data[index].add(new Pair<>(key, value));
-			size++;
+			insertPair(key, value, index);
 			return;
 		}
 
 		pair.value = value;
 
+	}
+
+	private void insertPair(K key, V value, int index) {
+		data[index].add(new Pair<>(key, value));
+		size++;
+		if (size > data.length * LOAD_FACTOR) {
+			resize(data.length * 2);
+		}
 	}
 
 	private int hash(K key) {
