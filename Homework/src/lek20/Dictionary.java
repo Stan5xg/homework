@@ -19,11 +19,21 @@ public class Dictionary<K,V> implements Iterable<Pair<K,V>> {
 		K key;
 		V value;
 	}
-	@SuppressWarnings("unchecked")
-	List<Pair<K,V>>[] data = new List[MAX];
 	
 	int size = 0;
+	List<Pair<K,V>>[] data;
 
+	@SuppressWarnings("unchecked")
+	public Dictionary() {
+		data = new List[MAX];
+		
+	}
+
+	@SuppressWarnings("unchecked")
+	public Dictionary(int size) {
+		data = new List[size];
+		
+	}
 
 	
 	public void put(K key, V value) {
