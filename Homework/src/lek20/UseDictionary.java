@@ -29,6 +29,15 @@ public class UseDictionary {
 			System.out.println(pair.key + " : " + pair.value);
 		}
 		
+		System.out.println("Size before resizing: " + d.data.length + " field size = " + d.size);
+		d.resize(50);
+		
+		for (Pair<String, String> pair : d) {
+			System.out.println(pair.key + " : " + pair.value);
+		}
+		
+		System.out.println("Size after resizing: " + d.data.length + " field size = " + d.size);
+		
 	}
 
 }

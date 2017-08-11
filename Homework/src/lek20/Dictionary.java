@@ -19,10 +19,13 @@ public class Dictionary<K,V> implements Iterable<Pair<K,V>> {
 		K key;
 		V value;
 	}
-
 	@SuppressWarnings("unchecked")
 	List<Pair<K,V>>[] data = new List[MAX];
+	
+	int size = 0;
 
+
+	
 	public void put(K key, V value) {
 		/*
 		 * 3 cases: 
@@ -35,12 +38,16 @@ public class Dictionary<K,V> implements Iterable<Pair<K,V>> {
 		int index = hash(key);
 		if (data[index] == null) {
 			data[index] = new ArrayList<>();
+			data[index].add(new Pair<>(key, value));
+			size++;
+			return;
 		}
 
 		Pair<K,V> pair = getPair(index, key);
 
 		if (pair == null) {
 			data[index].add(new Pair<>(key, value));
+			size++;
 			return;
 		}
 
@@ -116,6 +123,25 @@ public class Dictionary<K,V> implements Iterable<Pair<K,V>> {
 				return listIterator.next();
 			}
 		};
+	}
+
+	@SuppressWarnings("unchecked")
+	public void resize(int newSize) {
+		if (newSize <= 0) {
+			throw new IllegalArgumentException("Can't make array size zero or negative");
+		}
+		
+		List<Pair<K,V>>[] oldData = data;
+		data = new List[newSize];
+		size = 0;
+		for(List<Pair<K, V>> listOfPairs : oldData) {
+			if (listOfPairs == null) {
+				continue;
+			}
+			for(Pair<K,V> pair : listOfPairs) {
+				this.put(pair.key, pair.value);
+			}
+		}
 	}
 
 }
