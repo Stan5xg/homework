@@ -6,12 +6,12 @@ import java.util.List;
 
 import lek20.Dictionary.Pair;
 
-public class Dictionary<K,V> implements Iterable<Pair<K,V>> {
+public class Dictionary<K, V> implements Iterable<Pair<K, V>> {
 
 	private static final double LOAD_FACTOR = 0.75;
 	private static final int MAX = 3;
 
-	public static class Pair<K,V> {
+	public static class Pair<K, V> {
 		public Pair(K key, V value) {
 			this.key = key;
 			this.value = value;
@@ -20,32 +20,33 @@ public class Dictionary<K,V> implements Iterable<Pair<K,V>> {
 		K key;
 		V value;
 	}
-	
+
 	int size = 0;
-	List<Pair<K,V>>[] data;
+	List<Pair<K, V>>[] data;
 
 	@SuppressWarnings("unchecked")
 	public Dictionary() {
 		data = new List[MAX];
-		
+
 	}
 
 	@SuppressWarnings("unchecked")
 	public Dictionary(int size) {
+		if (size <= 0) {
+			throw new IllegalArgumentException("Dictionary size can't be <= 0");
+		}
 		data = new List[size];
-		
 	}
 
-	
 	public void put(K key, V value) {
 		/*
 		 * 3 cases: 
-		 * 1. There is no ArrayList in the cell
-		 * 2. There is ArrayList, but no Pair with this key
+		 * 1. There is no ArrayList in the cell 
+		 * 2. There is ArrayList, but no Pair with this key 
 		 * 3. There is ArrayList and Pair with this key
 		 * 
 		 */
-		
+
 		int index = hash(key);
 		if (data[index] == null) {
 			data[index] = new ArrayList<>();
@@ -53,7 +54,7 @@ public class Dictionary<K,V> implements Iterable<Pair<K,V>> {
 			return;
 		}
 
-		Pair<K,V> pair = getPair(index, key);
+		Pair<K, V> pair = getPair(index, key);
 
 		if (pair == null) {
 			insertPair(key, value, index);
@@ -77,21 +78,21 @@ public class Dictionary<K,V> implements Iterable<Pair<K,V>> {
 	}
 
 	public V get(K key) {
-		Pair<K,V> pair = getPair(key);
+		Pair<K, V> pair = getPair(key);
 		return pair == null ? null : pair.value;
 	}
 
 	private Pair<K, V> getPair(K key) {
 		return getPair(hash(key), key);
 	}
-	
-	private Pair<K,V> getPair(int hash, K key) {
+
+	private Pair<K, V> getPair(int hash, K key) {
 		int index = hash;
-		List<Pair<K,V>> list = data[index];
+		List<Pair<K, V>> list = data[index];
 		if (list == null) { // guard condition
 			return null;
 		}
-		for (Pair<K,V> pair : list) {
+		for (Pair<K, V> pair : list) {
 			if (pair.key.equals(key)) {
 				return pair;
 			}
@@ -100,14 +101,14 @@ public class Dictionary<K,V> implements Iterable<Pair<K,V>> {
 	}
 
 	@Override
-	public Iterator<Pair<K,V>> iterator() {
-		return new Iterator<Dictionary.Pair<K,V>>() {
+	public Iterator<Pair<K, V>> iterator() {
+		return new Iterator<Dictionary.Pair<K, V>>() {
 			int currentElement = 0;
-			Iterator<Pair<K,V>> listIterator = null;
+			Iterator<Pair<K, V>> listIterator = null;
 
 			private boolean findListIterator() {
 				while (currentElement < data.length) {
-					List<Pair<K,V>> currentList = data[currentElement];
+					List<Pair<K, V>> currentList = data[currentElement];
 					currentElement++;
 					if (currentList != null) {
 						listIterator = currentList.iterator();
@@ -116,24 +117,24 @@ public class Dictionary<K,V> implements Iterable<Pair<K,V>> {
 				}
 				return false;
 			}
-			
+
 			@Override
 			public boolean hasNext() {
 				if (listIterator != null && listIterator.hasNext()) {
 					return true;
 				}
-				
-				while(findListIterator()) {
+
+				while (findListIterator()) {
 					if (listIterator.hasNext()) {
 						return true;
 					}
 				}
-				
+
 				return false;
 			}
 
 			@Override
-			public Pair<K,V> next() {
+			public Pair<K, V> next() {
 				if (!hasNext()) {
 					throw new IllegalArgumentException();
 				}
@@ -147,15 +148,15 @@ public class Dictionary<K,V> implements Iterable<Pair<K,V>> {
 		if (newSize <= 0) {
 			throw new IllegalArgumentException("Can't make array size zero or negative");
 		}
-		
-		List<Pair<K,V>>[] oldData = data;
+
+		List<Pair<K, V>>[] oldData = data;
 		data = new List[newSize];
 		size = 0;
-		for(List<Pair<K, V>> listOfPairs : oldData) {
+		for (List<Pair<K, V>> listOfPairs : oldData) {
 			if (listOfPairs == null) {
 				continue;
 			}
-			for(Pair<K,V> pair : listOfPairs) {
+			for (Pair<K, V> pair : listOfPairs) {
 				this.put(pair.key, pair.value);
 			}
 		}
