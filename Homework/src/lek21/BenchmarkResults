@@ -1,0 +1,17 @@
+== LinkedList Test ==
+Filling: 862
+Sorting: 630
+Searching: 15
+Full test time: 1513
+====================
+== ArrayList Test ==
+Filling: 100
+Sorting: 426
+Searching: 0
+Full test time: 526
+====================
+== TreeSet Test ==
+Filling: 10762
+Searching: 0
+Full test time: 10762
+====================
