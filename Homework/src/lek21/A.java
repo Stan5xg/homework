@@ -3,7 +3,7 @@ package lek21;
 import java.util.Random;
 
 class A implements Comparable<A> {
-	static Random r = new Random();
+	static Random r = new Random(42);
 	int x = r.nextInt(10);
 	
 	@Override
