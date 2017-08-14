@@ -29,6 +29,7 @@ public class BinarySearchBenchmark {
 
 		Set<A> treeSet = new TreeSet<>();
 		A.resetRandom();
+		
 		System.out.println("== TreeSet Test ==");
 		System.out.println("Full test time: " + testSet(treeSet).toMillis());
 		System.out.println("====================");
