@@ -24,10 +24,6 @@ public class RadixInt {
 		}
 	}
 
-	public static final int[] intToByteArray(int value) {
-		return new int[] { 
-				(value) & 0xFF};
-	}
 
 	public static int getByte(int value, int byteCount) {
 		return ((value >>> (byteCount * 8)) & 0xFF);
@@ -64,19 +60,6 @@ public class RadixInt {
 			}
 			currByteCount ++;
 		}
-	}
-	
-	public static void main(String[] args) {
-
-		int i = 1;
-		System.out.println(getByte(i, 0));
-		int[] ints = intToByteArray(i);
-		System.out.println(Arrays.toString(ints));
-
-		int i1 = -1;
-		System.out.println(getByte(i1, 0));
-		int[] ints1 = intToByteArray(i1);
-		System.out.println(Arrays.toString(ints1));
 	}
 
 }
