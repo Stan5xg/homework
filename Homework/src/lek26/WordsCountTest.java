@@ -11,6 +11,11 @@ public class WordsCountTest {
 		System.out.println(Arrays.toString(words));
 		Map<String, Integer> counted = WordsCount.count(words);
 		System.out.println(counted);
+
+		Map<String, Integer> counted2 = WordsCount.countStream(words);
+		System.out.println(counted2);
+		
+		
 	}
 	
 
