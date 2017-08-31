@@ -38,7 +38,6 @@ public class Solitare extends Applet {
 
 	@Override
 	public boolean mouseDown(Event evt, int x, int y) {
-		
 		Card selectedBefore = null;
 		if (selected != null) {
 			selectedBefore = selected.getSelectedCard();
