@@ -5,38 +5,48 @@ import java.util.Optional;
 import java.util.concurrent.Executor;
 
 public class Worker implements Executor {
-	
-	static final Runnable POISON_PILL = () -> {};
-	
+
+	// static final Runnable POISON_PILL = () -> {};
+
+	boolean keepGoing = true;
+	boolean stopNow = false;
+
 	BlockingQueue<Runnable> tasks = new BlockingQueue<>();
-	
+	private Thread thread;
+
 	public Worker() {
-		new Thread(this::processTasks).start();
+		thread = new Thread(this::processTasks);
+		thread.start();
 	}
 
 	@Override
 	public void execute(Runnable command) {
-		tasks.put(command);
-	}
-	
-	private void processTasks() {
-		while (true) {
-			Runnable task = tasks.take();
-			if (task == POISON_PILL) {
-				return;
-			}
-			Optional.ofNullable(task).ifPresent(r -> r.run());
+		if (keepGoing) {
+			tasks.put(command);
 		}
-		
 	}
-	
+
+	private void processTasks() {
+		synchronized (tasks) {
+			while (tasks.hasTasks() || keepGoing && !stopNow) {
+				Runnable task = tasks.take();
+				Optional.ofNullable(task).ifPresent(r -> r.run());
+				if (stopNow) {
+					tasks.notify();
+					break;
+				}
+			}
+		}
+
+	}
+
 	public void shutdown() {
-		tasks.put(POISON_PILL);
+		keepGoing = false;
 	}
-	
-	public List<Runnable>  shutdownNow() {
-		// TODO
-		return null;
+
+	public List<Runnable> shutdownNow() {
+			stopNow = true;
+			return tasks.toList();
 	}
-	
+
 }

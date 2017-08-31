@@ -1,6 +1,7 @@
 package lek29;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class BlockingQueue<T> {
@@ -25,6 +26,14 @@ public class BlockingQueue<T> {
 			}
 			return items.poll();
 		}
+	}
+
+	public boolean hasTasks() {
+		return !items.isEmpty();
+	}
+
+	public List<T> toList() {
+		return (LinkedList<T>) items;
 	}
 
 	
